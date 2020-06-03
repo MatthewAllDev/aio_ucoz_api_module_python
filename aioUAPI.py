@@ -1,6 +1,6 @@
 # Python async module for easy integration with uAPI (ucoz API).
 # author Ilya Matthew Kuvarzin <luceo2011@yandex.ru>
-# version 1.0 dated May 11, 2020
+# version 1.4 dated June 03, 2020
 
 from urllib.parse import quote_plus, urlencode
 from time import time
@@ -15,11 +15,11 @@ import aiohttp
 class Request(object):
 
     def __init__(self, site: str, transfer_protocol: str, config: dict):
-        self.session = aiohttp.ClientSession()
-        self.site = site
-        self.transfer_protocol = transfer_protocol
-        self.config = config
-        self.params = {
+        self.session: aiohttp.ClientSession = aiohttp.ClientSession()
+        self.site: str = site
+        self.transfer_protocol: str = transfer_protocol
+        self.config: dict = config
+        self.params: dict = {
             'oauth_version': '1.0',
             'oauth_signature_method': 'HMAC-SHA1',
             'oauth_consumer_key': self.config['oauth_consumer_key'],
